@@ -1,7 +1,109 @@
-<iframe 
-  src="https://games.poki.com/458768/crossyroad?tag=pg-c5c11cf85064c6f3a7c0ae3b13ce317012030c90&site_id=52&iso_lang=es&country=PE&poki_url=https://poki.com/es/g/crossy-road&hoist=yes&nonPersonalized=n&cloudsavegames=n&familyFriendly=n&categories=9,64,96,103,389,903,929,1018,1103,1126,1137&ab=28913d17a4f42bf69d656f4d8cfed2b17674f451&experiment=a-67a49b85&special_condition=landing&user_id=acHmlkfjLnrlbo-OY7ISlQ" 
-  width="100%" 
-  height="100%" 
-  style="border:none;"
-  allowfullscreen>
-</iframe>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Portal de Juegos</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #020617;
+      padding: 10px;
+      overflow-y: auto;
+      border-right: 2px solid #1e293b;
+    }
+
+    .game {
+      background: #1e293b;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .game:hover {
+      background: #334155;
+    }
+
+    /* Main */
+    .main {
+      flex: 1;
+      position: relative;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #94a3b8;
+      font-size: 24px;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.5);
+      padding: 10px;
+      z-index: 10;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3>🎮 Juegos</h3>
+
+    <div class="game" onclick="loadGame('https://gamecollections.me/game/3kh0-assets-main/crossyroad/')">
+      🚗 Crossy Road (Space)
+    </div>
+
+    <div class="game" onclick="loadGame('https://crossy-road.gitlab.io/file/')">
+      🐔 Crossy Road (Original)
+    </div>
+
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="placeholder" id="placeholder">
+      Selecciona un juego 👈
+    </div>
+
+    <iframe id="frame" style="display:none;"></iframe>
+  </div>
+
+  <script>
+    function loadGame(url) {
+      const frame = document.getElementById("frame");
+      const placeholder = document.getElementById("placeholder");
+
+      frame.src = url;
+      frame.style.display = "block";
+      placeholder.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
